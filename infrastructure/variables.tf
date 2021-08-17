@@ -1,5 +1,5 @@
 variable "base_bucket_name" {
-  default = "datalake-igti-tf"
+  default = "datalake-igti-tf-tancredo-2021"
 }
 
 variable "ambiente" {
