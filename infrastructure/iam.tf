@@ -1,7 +1,7 @@
 resource "aws_iam_role" "lambda" {
-    name = "IGTIlambdaRole"
+  name = "IGTIlambdaRole"
 
-      assume_role_policy = <<EOF
+  assume_role_policy = <<EOF
     {
     "Version": "2012-10-17",
     "Statement": [
@@ -16,22 +16,22 @@ resource "aws_iam_role" "lambda" {
     ]
   }
   EOF
-         
-    tags = {
-        IES   = "IGTI",
-        CURSO = "EDC"
-    }
-}
-    
-    
-    resource "aws_iam_policy" "lambda" {
-        name        = "IGTIAWSLambdaBasicExecutionRolePolicy"
-        path        = "/"
-        description = "Provides write permissions to CloudWatch logds, S3 buckets and EMR Steps"
 
-        # Terraform's "jsonencode" function converts a
-        # Terraform expression result to valid JSON syntax.
-        policy = <<EOF
+  tags = {
+    IES   = "IGTI",
+    CURSO = "EDC"
+  }
+}
+
+
+resource "aws_iam_policy" "lambda" {
+  name        = "IGTIAWSLambdaBasicExecutionRolePolicy"
+  path        = "/"
+  description = "Provides write permissions to CloudWatch logds, S3 buckets and EMR Steps"
+
+  # Terraform's "jsonencode" function converts a
+  # Terraform expression result to valid JSON syntax.
+  policy =<<EOF
         {
         "Version": "2012-10-17",
         "Statement": [
@@ -60,16 +60,16 @@ resource "aws_iam_role" "lambda" {
                 },
                 {
                 "Action": "iam:PassRole",
-                "Resource": ["arn:aws:iam::421168935276:role/EMR_DefaultRole",
-                            "arn:aws:iam::421168935276:role/EMR_EC2_DefaultRole"],
+                "Resource": [ "arn:aws:iam::421168935276:role/EMR_DefaultRole",
+                            "arn:aws:iam::421168935276:role/EMR_EC2_DefaultRole" ],
                 "Effect": "Allow"
                 }
             ]
         }
-    EOF
-    }
+EOF
+}
 
-    resource "aws_iam_role_policy_attachment" "lambda_attach" {
-        role       = aws_iam_role.lambda.name
-        policy_arn = aws_iam_policy.lambda.arn
+resource "aws_iam_role_policy_attachment" "lambda_attach" {
+  role       = aws_iam_role.lambda.name
+  policy_arn = aws_iam_policy.lambda.arn
 }
