@@ -3,15 +3,15 @@ resource "aws_iam_role" "lambda" {
 
       assume_role_policy = <<EOF
     {
-    "Version" = "2012-10-17"
-    "Statement" = [
+    "Version": "2012-10-17"
+    "Statement": [
       {
-        "Action" = "sts:AssumeRole"
-        "Principal" = {
-          "Service" = "lambda.amazonaws.com"
+        "Action": "sts:AssumeRole"
+        "Principal": {
+          "Service": "lambda.amazonaws.com"
         }
-        "Effect" = "Allow"
-        "Sid"    = "AssumeRole"
+        "Effect": "Allow"
+        "Sid": "AssumeRole"
       }
     ]
   }
@@ -33,36 +33,36 @@ resource "aws_iam_role" "lambda" {
         # Terraform expression result to valid JSON syntax.
         policy = <<EOF
         {
-            "Version" = "2012-10-17",
-            "Statement" = [
+            "Version": "2012-10-17",
+            "Statement": [
             {
-                "Effect"   = "Allow",
-                "Action" = [
+                "Effect": "Allow",
+                "Action": [
                         "logs:CreateLogGroup",
                         "logs:CreateLogStream",
                         "logs:PutLogEvents"
                 ],
-                Resource = "*"
+                Resource: "*"
             },
                {
-                "Effect"   = "Allow",
-                "Action" = [
+                "Effect": "Allow",
+                "Action": [
                         "s3:*"
                 ],
-                Resource = "*"
+                Resource: "*"
             },
             },
                {
-                "Effect"   = "Allow",
-                "Action" = [
+                "Effect": "Allow",
+                "Action": [
                         "elasticmapreduce:*"
                 ],
-                Resource = "*"
+                Resource: "*"
             },
                {
-                "Effect"   = "Allow",
-                "Action" = "iam:PassRole",                ],
-                Resource = ["arn:aws:iam::127012818163:role/EMR_DefaultRole",
+                "Effect": "Allow",
+                "Action": "iam:PassRole",                ],
+                Resource: ["arn:aws:iam::127012818163:role/EMR_DefaultRole",
                             "arn:aws:iam::127012818163:role/EMR_EC2_DefaultRole"
                             ]
             }
