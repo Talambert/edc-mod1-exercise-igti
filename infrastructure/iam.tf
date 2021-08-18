@@ -12,8 +12,7 @@ resource "aws_iam_role" "lambda" {
         }
         "Effect" = "Allow"
         "Sid"    = "AssumeRole"
-        
-      },
+      }
     ]
   }
   EOF
@@ -22,6 +21,7 @@ resource "aws_iam_role" "lambda" {
         IES   = "IGTI",
         CURSO = "EDC"
     }
+}
     
     
     resource "aws_iam_policy" "lambda" {
@@ -74,45 +74,4 @@ resource "aws_iam_role" "lambda" {
     resource "aws_iam_role_policy_attachment" "lambda_attach" {
         role       = aws_iam_role.lambda.name
         policy_arn = aws_iam_policy.lambda.arn
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-            ]
-        })
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    filename = "lambda_funcion_payload.zip"
-    function_name = var.lambda_function_name
-    role = aws_iam_role.lambda.arn
-    handler = "lambda_function_handler"
-    memory_size = 128
-    timeout = 30
-
-    source_code_hash = filebase64sha256("lambda_function_payload.zip")
-
-    runtime = "python3.8"
-    
-
 }
