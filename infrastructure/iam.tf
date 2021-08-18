@@ -29,9 +29,9 @@ resource "aws_iam_policy" "lambda" {
   path        = "/"
   description = "Provides write permissions to CloudWatch logds, S3 buckets and EMR Steps"
 
-  # Terraform's "jsonencode" function converts a
+  # Terraform's jsonencode function converts a
   # Terraform expression result to valid JSON syntax.
-  policy =<<EOF
+  policy = <<EOF
         {
         "Version": "2012-10-17",
         "Statement": [
@@ -65,7 +65,7 @@ resource "aws_iam_policy" "lambda" {
                 "Effect": "Allow"
                 }
             ]
-        }
+}
 EOF
 }
 
