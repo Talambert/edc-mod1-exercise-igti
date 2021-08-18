@@ -3,7 +3,7 @@ resource "aws_iam_role" "lambda" {
 
       assume_role_policy = <<EOF
     {
-    "Version": "2012-10-17"
+    "Version": "2012-10-17",
     "Statement": [
       {
         "Action": "sts:AssumeRole"
@@ -51,15 +51,14 @@ resource "aws_iam_role" "lambda" {
                 ],
                 Resource: "*"
             },
-            },
-               {
+            {
                 "Effect": "Allow",
                 "Action": [
                         "elasticmapreduce:*"
                 ],
                 Resource: "*"
             },
-               {
+            {
                 "Effect": "Allow",
                 "Action": "iam:PassRole",                ],
                 Resource: ["arn:aws:iam::127012818163:role/EMR_DefaultRole",
