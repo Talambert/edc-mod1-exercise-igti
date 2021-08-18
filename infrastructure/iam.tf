@@ -33,9 +33,9 @@ resource "aws_iam_role" "lambda" {
         # Terraform expression result to valid JSON syntax.
         policy = <<EOF
         {
-            "Version": "2012-10-17",
-            "Statement": [
-            {
+        "Version": "2012-10-17",
+        "Statement": [
+                {
                 "Effect": "Allow",
                 "Action": [
                         "logs:CreateLogGroup",
@@ -43,30 +43,29 @@ resource "aws_iam_role" "lambda" {
                         "logs:PutLogEvents"
                 ],
                 "Resource": "*"
-            },
+                },
                {
                 "Effect": "Allow",
                 "Action": [
                         "s3:*"
                 ],
                 "Resource": "*"
-            },
-            {
+                },
+                {
                 "Effect": "Allow",
                 "Action": [
                         "elasticmapreduce:*"
                 ],
                 "Resource": "*"
-            },
-            {
-                "Effect": "Allow",
+                },
+                {
                 "Action": "iam:PassRole",
                 "Resource": ["arn:aws:iam::421168935276:role/EMR_DefaultRole",
-                            "arn:aws:iam::421168935276:role/EMR_EC2_DefaultRole"
-                            ]
-            }
-        ]
-    }
+                            "arn:aws:iam::421168935276:role/EMR_EC2_DefaultRole"],
+                "Effect": "Allow"
+                }
+            ]
+        }
     EOF
     }
 
