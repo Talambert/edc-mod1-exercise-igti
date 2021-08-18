@@ -42,26 +42,26 @@ resource "aws_iam_role" "lambda" {
                         "logs:CreateLogStream",
                         "logs:PutLogEvents"
                 ],
-                Resource: "*"
+                "Resource": "*"
             },
                {
                 "Effect": "Allow",
                 "Action": [
                         "s3:*"
                 ],
-                Resource: "*"
+                "Resource": "*"
             },
             {
                 "Effect": "Allow",
                 "Action": [
                         "elasticmapreduce:*"
                 ],
-                Resource: "*"
+                "Resource": "*"
             },
             {
                 "Effect": "Allow",
                 "Action": "iam:PassRole",                ],
-                Resource: ["arn:aws:iam::127012818163:role/EMR_DefaultRole",
+                "Resource": ["arn:aws:iam::127012818163:role/EMR_DefaultRole",
                             "arn:aws:iam::127012818163:role/EMR_EC2_DefaultRole"
                             ]
             }
