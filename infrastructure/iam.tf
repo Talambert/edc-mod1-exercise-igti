@@ -1,8 +1,8 @@
-resource "aws_iam_role" "lambda" {
+resource "aws_iam_role" "lambda"{
   name = "IGTIlambdaRole"
 
   assume_role_policy = <<EOF
-    {
+  {
     "Version": "2012-10-17",
     "Statement": [
       {
@@ -24,7 +24,7 @@ resource "aws_iam_role" "lambda" {
 }
 
 
-resource "aws_iam_policy" "lambda" {
+resource "aws_iam_policy" "lambda"{
   name        = "IGTIAWSLambdaBasicExecutionRolePolicy"
   path        = "/"
   description = "Provides write permissions to CloudWatch logds, S3 buckets and EMR Steps"
