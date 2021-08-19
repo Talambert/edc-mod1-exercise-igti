@@ -1,30 +1,30 @@
-resource "aws_iam_role" "lambda"{
-  name = "IGTIlambdaRole"
-
-  assume_role_policy = <<EOF
-  {
-    "Version": "2012-10-17",
-    "Statement": [
-      {
-        "Action": "sts:AssumeRole",
-        "Principal": {
-          "Service": "lambda.amazonaws.com"
-        },
-        "Effect": "Allow",
-        "Sid": "AssumeRole"
-      }
-    ]
+resource "aws_iam_role" "lambda" {
+    name = "IGTIlambdaRole"
+  
+    assume_role_policy = <<EOF
+    {
+      "Version": "2012-10-17",
+      "Statement": [
+        {
+          "Action": "sts:AssumeRole",
+          "Principal": {
+            "Service": "lambda.amazonaws.com"
+          },
+          "Effect": "Allow",
+          "Sid": "AssumeRole"
+        }
+      ]
+    }
+    EOF
+  
+    tags = {
+      IES   = "IGTI",
+      CURSO = "EDC"
+    }
   }
-  EOF
-
-  tags = {
-    IES   = "IGTI",
-    CURSO = "EDC"
-  }
-}
 
 
-resource "aws_iam_policy" "lambda"{
+resource "aws_iam_policy" "lambda" {
   name        = "IGTIAWSLambdaBasicExecutionRolePolicy"
   path        = "/"
   description = "Provides write permissions to CloudWatch logds, S3 buckets and EMR Steps"
