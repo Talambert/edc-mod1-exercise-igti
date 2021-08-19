@@ -35,9 +35,9 @@ if [ -f $LAMBDA_FUNCTION ]
 then
     echo "============================================="
     echo "Copiando função Handler..."
-    cp $LAMBDA_FUNCTION
+    cp $LAMBDA_FUNCTION .
     echo "Compactando arquivo lambda_function_payload.zip"
-    zip -r9 ../lambda_function_payload.zip
+    zip -r9 ../lambda_function_payload.zip .
     echo "Arquivo compactado com sucesso!"
     echo "============================================="
 fi

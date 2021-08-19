@@ -31,7 +31,7 @@ resource "aws_iam_policy" "lambda" {
 
   # Terraform's jsonencode function converts a
   # Terraform expression result to valid JSON syntax.
-  policy = <<EOF
+  policy = jsonencode(
         {
         "Version": "2012-10-17",
         "Statement": [
@@ -65,8 +65,7 @@ resource "aws_iam_policy" "lambda" {
                 "Effect": "Allow"
                 }
             ]
-}
-EOF
+})
 }
 
 resource "aws_iam_role_policy_attachment" "lambda_attach" {
